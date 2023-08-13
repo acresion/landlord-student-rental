@@ -1,10 +1,14 @@
 package landlord.student.rental.daowork;
 
 import landlord.student.rental.daowork.Tenant.TenantBuilder;
-
+/**
+ * 
+ *
+ */
 public class Landlord {
 	
 
+	
 	private final int landlordId;
 	private final String buildingName;
 	private final int buildingNumberOfRooms;
@@ -73,25 +77,30 @@ public class Landlord {
 			this.rent = lord.rent;
 			return this;
 		}
+		
 		public LandlordBuilder buildingName(String buildingName) {
 			this.buildingName = buildingName;
 			return this;
 		}
+		
 		public LandlordBuilder buildingNumberOfRooms(int buildingNumberOfRooms) {
 			this.buildingNumberOfRooms = buildingNumberOfRooms;
 			return this;
 		}
+		
 		public LandlordBuilder buildingNumberOfStories(int buildingNumberOfStories) {
 			this.buildingNumberOfStories = buildingNumberOfStories;
 			return this;
 		}
+		
 		public LandlordBuilder rent(int rent) {
 			this.rent = rent;
 			return this;
 		}
+		
 		public  Landlord builder() {
 			return new Landlord(this);
 		}
-	}
+	} 
 
-}
+} 
