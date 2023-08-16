@@ -142,7 +142,7 @@ public class Landlord {
 			return this;
 		}
 		/**
-		 * This builds a new Landlord 
+		 * This builds a new Landlord object when the method is called
 		 * @return 
 		 */
 		

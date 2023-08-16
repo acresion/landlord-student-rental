@@ -3,6 +3,11 @@ package landlord.student.rental.daowork;
 import java.sql.*;
 
 public class ConnectionToSQL {
+	/**
+	 * 
+	 * @return The return of this method generates a successful connection to the database. This is subject to change.
+	 * @throws SQLException This gets thrown when there is a problem when the user tries to connect to the database
+	 */
 
 	public static Connection connectToDataBase() throws SQLException {
 
