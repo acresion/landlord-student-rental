@@ -2,6 +2,9 @@ package landlord.student.rental.daowork;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -65,5 +68,9 @@ class LandlordTest {
 		String landString = "Landlord [landlordId=1, buildingName=ranneed, buildingNumberOfRooms=550, buildingNumberOfStories=23, rent=1230]";
 		assertEquals(landString, landlord.toString());
 	}
+
+
+
+	
 
 }

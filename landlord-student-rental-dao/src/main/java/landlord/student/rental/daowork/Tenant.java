@@ -3,9 +3,6 @@ package landlord.student.rental.daowork;
 import java.util.Objects;
 
 public class Tenant {
-	
-
-
 	private final int tenantId;
 	private final String firstName;
 	private final String lastName;
@@ -106,24 +103,41 @@ public class Tenant {
 		return dayOfBirth;
 	}
 
-
-
 	public int getRoom() {
 		return room;
 	}
-
-
 
 	public int getFloor() {
 		return floor;
 	}
 
-
-
 	public int getLandlordId() {
 		return landlordId;
 	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(addressBeforeMovein, cityBeforeMovein, countryBeforeMovein, dayOfBirth, firstName, floor,
+				landlordId, lastName, monthOfBirth, room, stateBeforeMovein, tenantId, yearOfBirth);
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tenant other = (Tenant) obj;
+		return Objects.equals(addressBeforeMovein, other.addressBeforeMovein)
+				&& Objects.equals(cityBeforeMovein, other.cityBeforeMovein)
+				&& Objects.equals(countryBeforeMovein, other.countryBeforeMovein) && dayOfBirth == other.dayOfBirth
+				&& Objects.equals(firstName, other.firstName) && floor == other.floor && landlordId == other.landlordId
+				&& Objects.equals(lastName, other.lastName) && monthOfBirth == other.monthOfBirth && room == other.room
+				&& Objects.equals(stateBeforeMovein, other.stateBeforeMovein) && tenantId == other.tenantId
+				&& yearOfBirth == other.yearOfBirth;
+	}
 
 
 	public static class TenantBuilder {

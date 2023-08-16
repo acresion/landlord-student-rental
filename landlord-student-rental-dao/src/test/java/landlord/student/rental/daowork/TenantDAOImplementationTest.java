@@ -24,7 +24,7 @@ class TenantDAOImplementationTest {
 					.monthOfBirth(12).dayOfBirth(3).room(503).floor(5).landlordId(1).build();
 			TenantDAOImplementation tenantDAO = new TenantDAOImplementation();
 			tenantDAO.addTenant(con, newTenant);
-			assertEquals(newTenant.toString(), tenantDAO.getTenant(con, 1));
+			assertEquals(newTenant, tenantDAO.getTenant(con, 1));
 
 		}
 	}
@@ -37,7 +37,7 @@ class TenantDAOImplementationTest {
 					.monthOfBirth(12).dayOfBirth(3).room(503).floor(5).landlordId(1).build();
 			TenantDAOImplementation tenantDAO = new TenantDAOImplementation();
 			tenantDAO.addTenant(con, newTenant);
-			assertEquals(newTenant.toString(), tenantDAO.getTenant(con, 1));
+			assertEquals(newTenant.toString(), tenantDAO.getTenant(con, 1).toString());
 		}
 
 	}
