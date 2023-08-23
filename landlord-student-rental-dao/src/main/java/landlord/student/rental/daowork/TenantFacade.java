@@ -4,7 +4,11 @@ package landlord.student.rental.daowork;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-
+/**
+ * This acts as a bridge betweeen the TenantDAO and the servlet.
+ * @author Alexandru
+ *
+ */
 public class TenantFacade {
 
 	public List<Tenant> getAllTenants() throws SQLException

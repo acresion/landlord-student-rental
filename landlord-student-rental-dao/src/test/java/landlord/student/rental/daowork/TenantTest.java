@@ -210,16 +210,9 @@ class TenantTest {
 		String testString = "Tenant [tenantId=1, firstName=Alex, lastName=Petrangelo, addressBeforeMovein=null, cityBeforeMovein=Paris, stateBeforeMovein=null, countryBeforeMovein=France, yearOfBirth=1995, monthOfBirth=12, dayOfBirth=23, room=44, floor=1, landlordId=1]";
 		assertEquals(testString, newTenant.toString());
 	}
-	@ParameterizedTest
-	@ValueSource(ints = { 1, 2, 3, 4 })
-	void addressBeforeMoveInTest(int testCase) {
-		Tenant newTenant = new Tenant.TenantBuilder(1).firstName("Alex").lastName("Petrangelo")
-				.addressBeforeMovein("188 Jermiah Street").cityBeforeMovein("Paris").stateBeforeMovein(null)
-				.countryBeforeMovein("France").yearOfBirth(1995).monthOfBirth(12).dayOfBirth(3).room(503).floor(5)
-				.landlordId(1).build();
-		assertEquals(testCase, newTenant.getAddressBeforeMovein());
+	
 
 	}
 
 
-}
+

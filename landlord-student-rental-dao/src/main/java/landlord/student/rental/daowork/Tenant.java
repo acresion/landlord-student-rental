@@ -1,7 +1,11 @@
 package landlord.student.rental.daowork;
 
 import java.util.Objects;
-
+/**
+ * Here is our data object for the Tenant class
+ * @author Alexandru
+ *
+ */
 public class Tenant {
 	private final int tenantId;
 	private final String firstName;
@@ -32,7 +36,9 @@ public class Tenant {
 		this.landlordId = tenantBuilder.landlordId;
 	}
 	
-	
+	/**
+	 * The toString method for the Tenant class
+	 */
 	
 	@Override
 	public String toString() {
@@ -42,9 +48,8 @@ public class Tenant {
 				+ ", yearOfBirth=" + yearOfBirth + ", monthOfBirth=" + monthOfBirth + ", dayOfBirth=" + dayOfBirth
 				+ ", room=" + room + ", floor=" + floor + ", landlordId=" + landlordId + "]";
 	}
-
-
-
+	
+	// some basic getters
 	public int getTenantId() {
 		return tenantId;
 	}
@@ -115,11 +120,18 @@ public class Tenant {
 		return landlordId;
 	}
 	
+	/**
+	 * We need to define our own hashCode method along with our own equals method shown below
+	 */
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(addressBeforeMovein, cityBeforeMovein, countryBeforeMovein, dayOfBirth, firstName, floor,
 				landlordId, lastName, monthOfBirth, room, stateBeforeMovein, tenantId, yearOfBirth);
 	}
+	/**
+	 * Our own revised equals method, so we can check for similarity based on the content
+	 */
 
 	@Override
 	public boolean equals(Object obj) {

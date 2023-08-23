@@ -31,6 +31,7 @@ public class AddTenant extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * This method takes information from the web browser and internally summons the facade to add a new tenant
 	 * 
 	 */
     
