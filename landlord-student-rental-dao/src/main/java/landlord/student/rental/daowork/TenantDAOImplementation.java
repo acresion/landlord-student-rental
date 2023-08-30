@@ -12,6 +12,10 @@ public class TenantDAOImplementation implements TenantDAO {
 			+ ", addressBeforeMovein" + ", cityBeforeMovein" + ", stateBeforeMovein" + ", countryBeforeMovein"
 			+ ", yearOfBirth" + ", monthOfBirth" + ", dayOfBirth" + ", room" + ", floor" + ", landlordId\r\n"
 			+ "FROM rentalDataBase.Tenant";
+	private static final String GET_TENANT_SQL = "SELECT " + "tenantId" + ", firstName" + ", lastName"
+			+ ", addressBeforeMovein" + ", cityBeforeMovein" + ", stateBeforeMovein" + ", countryBeforeMovein"
+			+ ", yearOfBirth" + ", monthOfBirth" + ", dayOfBirth" + ", room" + ", floor" + ", landlordId\r\n"
+			+ "FROM rentalDataBase.Tenant WHERE tenantId = ?";
 
 	private static final String INSERT_TENANT_SQL = "insert into Tenant values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String DELETE_ONE_TENANT_SQL = "delete from Tenant where tenantId = ?";
@@ -60,9 +64,13 @@ public class TenantDAOImplementation implements TenantDAO {
 
 	@Override
 	public Tenant getTenant(Connection con, int tenantId) throws SQLException {
-		// TODO Auto-generated method stub
-		List<Tenant> tenants = getAllTenants(con);
-		return tenants.get(tenantId - 1);
+		try (PreparedStatement p = con.prepareStatement(GET_TENANT_SQL)) {
+			p.setInt(1, tenantId);
+			try(ResultSet rs = p.executeQuery()){
+				return createTenant(rs);
+			}
+		}
+		
 	}
 
 	@Override

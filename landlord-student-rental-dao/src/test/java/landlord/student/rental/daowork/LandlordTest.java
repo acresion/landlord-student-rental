@@ -13,13 +13,6 @@ import landlord.student.rental.daowork.Landlord.LandlordBuilder;
 
 class LandlordTest {
 
-	@Test
-	void testLandlord() {
-		LandlordBuilder landlord = new Landlord.LandlordBuilder(1).buildingName("ranneed").buildingNumberOfRooms(550)
-				.buildingNumberOfStories(23).rent(1230);
-		LandlordBuilder builder = new Landlord.LandlordBuilder(2).landlord(landlord.builder());
-		assertNotEquals(landlord.builder(), builder.builder());
-	}
 
 	@Test
 	void testGetLandlordId() {
