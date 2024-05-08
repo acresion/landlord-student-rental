@@ -2,6 +2,9 @@ package landlord.student.rental.daowork;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -148,5 +151,68 @@ class TenantTest {
 		assertEquals(1, newTenant.getLandlordId());
 
 	}
+	@Test
+	void constructorTest() {
+		TenantBuilder newTenantBuilder = new TenantBuilder(1).firstName("Alex").lastName("Petrangelo")
+				.addressBeforeMovein(null).cityBeforeMovein("Paris").stateBeforeMovein(null)
+				.countryBeforeMovein("France").yearOfBirth(1995).monthOfBirth(12).dayOfBirth(23).room(44).floor(1)
+				.landlordId(1);
+		Tenant newTenant = new Tenant.TenantBuilder(1).firstName("Alex").lastName("Petrangelo")
+				.addressBeforeMovein(null).cityBeforeMovein("Paris").stateBeforeMovein(null)
+				.countryBeforeMovein("France").yearOfBirth(1995).monthOfBirth(12).dayOfBirth(23).room(44).floor(1)
+				.landlordId(1).build();
+		assertEquals(newTenant, newTenantBuilder.tenant(newTenant).build());
 
-}
+	}
+	
+	@Test
+	void testHashCode() throws SQLException {
+		TenantFacade tenantFacade = new TenantFacade();
+		List<Tenant> allTenants = tenantFacade.getAllTenants();
+		Tenant tena = allTenants.get(0);
+		assertEquals(-2024043057, tena.hashCode());
+		
+	}
+
+	@Test
+	void testIfEquals() {
+		Tenant newTenant = new Tenant.TenantBuilder(1).firstName("Alex").lastName("Petrangelo")
+				.addressBeforeMovein(null).cityBeforeMovein("Paris").stateBeforeMovein(null)
+				.countryBeforeMovein("France").yearOfBirth(1995).monthOfBirth(12).dayOfBirth(23).room(44).floor(1)
+				.landlordId(1).build();
+		assertTrue(newTenant.equals(newTenant));
+	}
+	@Test
+	void testifNull() {
+		Tenant newTenant = new Tenant.TenantBuilder(1).firstName("Alex").lastName("Petrangelo")
+				.addressBeforeMovein(null).cityBeforeMovein("Paris").stateBeforeMovein(null)
+				.countryBeforeMovein("France").yearOfBirth(1995).monthOfBirth(12).dayOfBirth(23).room(44).floor(1)
+				.landlordId(1).build();
+		assertFalse(newTenant.equals(null));
+	}
+	@Test
+	void testForDifferentClass() {
+		Tenant newTenant = new Tenant.TenantBuilder(1).firstName("Alex").lastName("Petrangelo")
+				.addressBeforeMovein(null).cityBeforeMovein("Paris").stateBeforeMovein(null)
+				.countryBeforeMovein("France").yearOfBirth(1995).monthOfBirth(12).dayOfBirth(23).room(44).floor(1)
+				.landlordId(1).build();
+		Landlord landlord = new Landlord.LandlordBuilder(1).buildingName("ranneed").buildingNumberOfRooms(550)
+				.buildingNumberOfStories(23).rent(1230).builder();
+		assertFalse(newTenant.equals(landlord));
+		
+	}
+	@Test
+	void testToString() {
+		Tenant newTenant = new Tenant.TenantBuilder(1).firstName("Alex").lastName("Petrangelo")
+				.addressBeforeMovein(null).cityBeforeMovein("Paris").stateBeforeMovein(null)
+				.countryBeforeMovein("France").yearOfBirth(1995).monthOfBirth(12).dayOfBirth(23).room(44).floor(1)
+				.landlordId(1).build();
+		String testString = "Tenant [tenantId=1, firstName=Alex, lastName=Petrangelo, addressBeforeMovein=null, cityBeforeMovein=Paris, stateBeforeMovein=null, countryBeforeMovein=France, yearOfBirth=1995, monthOfBirth=12, dayOfBirth=23, room=44, floor=1, landlordId=1]";
+		assertEquals(testString, newTenant.toString());
+	}
+	
+
+	}
+
+
+
